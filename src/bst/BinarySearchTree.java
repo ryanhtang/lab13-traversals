@@ -214,20 +214,36 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//This is more difficult than the other traversals using a Stack
 	//I suggest using two stacks. Think about the order you want the elements
 	//to appear on the stack you will print.
+	
 	public void postOrderStack() {
 		Stack<BSTNode<T>> post = new Stack<>();
-		Stack<BSTNode<T>> postHelper = new Stack<>();
-		if(root!=null) {
-			postHelper.push(root);
-			while(!postHelper.isEmpty()) {
-				//how should post and postHelper be updated?
-			}
-			
-			while(!post.isEmpty()) {
-				BSTNode<T> node = post.pop();
-				System.out.print(node + " ");
-			}
-		}
+	    Stack<BSTNode<T>> postHelper = new Stack<>();
+	    
+	    System.out.print("Post Order Stack: ");
+	    
+	    if(root!=null) {
+	    	postHelper.push(root);
+	        BSTNode<T> curr;
+	        while(!postHelper.isEmpty()) {
+	        	
+	        	//how should post and postHelper be updated?
+	            curr = postHelper.pop();
+	            post.push(curr);
+
+	            if (curr.leftChild != null) {
+	            	postHelper.push(curr.leftChild);
+	            }
+	            if (curr.rightChild != null) {
+	                postHelper.push(curr.rightChild);
+	            }
+
+	            }
+
+	         while(!post.isEmpty()) {
+	             BSTNode<T> node = post.pop();
+	             System.out.print(node + " ");
+	         }
+	     }
 
 	}
 	

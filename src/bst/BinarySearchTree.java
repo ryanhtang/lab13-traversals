@@ -135,6 +135,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	public void preOrderStack() {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
 		
+		System.out.print("Pre Order Stack: ");
+		pre.push(root);
+		
+		while(!pre.isEmpty()) {
+			BSTNode curr = pre.pop();
+			System.out.print(curr.data + " ");
+			
+			if(curr.rightChild != null) {
+				pre.push(curr.rightChild);
+			}
+			if(curr.leftChild != null) {
+				pre.push(curr.leftChild);
+			}
+		}
 	}
 		
 
